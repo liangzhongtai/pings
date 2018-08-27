@@ -1,0 +1,21 @@
+{
+  "name": "com.chinamobile.ping.pings",
+  "version": "1.1.1",
+  "description": "this is a plugin about ping test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "liangzhongtai",
+  "cordova": {
+    "id": "com.chinamobile.ping.pings",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "license": "ISC",
+  "keywords": [
+    "ping"
+  ]
+}

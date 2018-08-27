@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="com.chinamobile.ping.pings" version="1.1.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>pings</name>
+    <js-module name="pings" src="www/pings.js">
+        <clobbers target="cordova.plugins.pings" />
+    </js-module>
+	 <platform name="android">
+        <!-- ping测速插件 -->
+         <config-file target="res/xml/config.xml" parent="/*">
+             <feature name="Pings">
+                 <param name="android-package" value="com.chinamobile.ping.Pings"/>
+             </feature>
+         </config-file>
+
+		 <!-- 权限 -->
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+			<uses-permission android:name="android.permission.INTERNET"/>
+        </config-file>
+     
+        <!-- 项目文件 -->
+        <source-file src="src/android/Pings.java"  target-dir="src/com/chinamobile/ping"/>
+		<source-file src="src/android/PingsUtil.java"  target-dir="src/com/chinamobile/ping"/>
+
+    </platform>
+    
+    <platform name="ios">
+        <!-- ping测速插件 -->
+        <config-file target="config.xml" parent="/*">
+            <feature name="Pings">
+                <param name="ios-package" value="Pings" />
+            </feature>
+        </config-file>
+
+        <!-- 网络权限 -->
+        <config-file target="*-Info.plist" parent="NSAppTransportSecurity">
+            <dict>
+                <key>NSAllowsArbitraryLoads</key>
+                <boolean>YES</boolean>
+            </dict>
+        </config-file>
+
+        <!--  项目文件 -->
+        <header-file src="src/ios/Pings.h" />
+        <source-file src="src/ios/Pings.m" />
+        <header-file src="src/ios/STSimplePing.h" />
+        <source-file src="src/ios/STSimplePing.m" />
+		<header-file src="src/ios/STDPingServices.h" />
+		<source-file src="src/ios/STDPingServices.m" />
+		<header-file src="src/ios/STDebugFoundation.h" />
+		<source-file src="src/ios/STDebugFoundation.m" />
+    </platform>
+</plugin>
